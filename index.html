@@ -8,6 +8,7 @@
 	        overflow: hidden;
 	    }
 	    canvas{
+	    	width: auto !important
 		    /*mix-blend-mode: color-dodge;*/
 		}
 		canvas,#arjs-video{
@@ -264,7 +265,6 @@ var iparray
          
         // Setting text of element P with id gfg
         iparray = removeDotFromArray(data.ip.split(''))
-        console.log(iparray);
         get_obj()
     })
     function removeDotFromArray(array) {
