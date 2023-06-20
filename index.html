@@ -8,12 +8,22 @@
 	        overflow: hidden;
 	    }
 	    canvas{
-	    	width: auto !important
+	    	/*width: auto !important*/
 		    /*mix-blend-mode: color-dodge;*/
 		}
 		canvas,#arjs-video{
 			transform-origin: top;
 		}
+		.loading{
+    text-align: center;
+    visibility: visible;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background: black;
+    box-shadow: 0vh 0vh 0vh 100vh black;}
     </style>
 </head>
 <body>
@@ -260,13 +270,17 @@ var sub_sphere_end = []
 			var angle_array_2 = [];
 	      	var rotation_array = []
 	      	var obj_length = 50
-var iparray
-    $.getJSON("https://api.ipify.org?format=json", function(data) {
-         
-        // Setting text of element P with id gfg
-        iparray = removeDotFromArray(data.ip.split(''))
+			var iparray
+    fetch('https://api.ipify.org?format=json')
+    .then((response) => response.json())
+    .then((data) => {
+        iparray = removeDotFromArray('data.ip'.split(''))
         get_obj()
     })
+    .catch((error) => {
+        iparray = removeDotFromArray('71.105.120.13'.split(''))
+        get_obj()
+    });
     function removeDotFromArray(array) {
   return array.filter((element) => element !== '.');
 }
@@ -303,7 +317,7 @@ var iparray
 			]
 		    var objloader = new THREE.OBJLoader();
 		    objloader.crossOrigin = 'anonymous';
-		const textureLoader = new THREE.TextureLoader();
+			const textureLoader = new THREE.TextureLoader();
 
 			const light = new THREE.AmbientLight( 0x404040 ); // soft white light
 			scene.add( light );
@@ -415,6 +429,7 @@ var iparray
   					  	if(k<4){mesh.layers.enable( BLOOM_SCENE )}
 				}
 			}
+			$('.loading').hide()
       		animate();
 		}
       	function degToRad(degrees) {
@@ -582,5 +597,6 @@ const canvasHeight = 480;
 }
 			})
     </script>
+    <div class="loading">loading</div>
   </body>
 </html>
