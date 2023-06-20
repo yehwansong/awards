@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Three.js Cylinder</title>
+    <title>🌀</title>
     <style>
 	    body {
 	        margin: 0;
@@ -274,7 +274,7 @@ var sub_sphere_end = []
     fetch('https://api.ipify.org?format=json')
     .then((response) => response.json())
     .then((data) => {
-        iparray = removeDotFromArray('data.ip'.split(''))
+        iparray = removeDotFromArray(data.ip.split(''))
         get_obj()
     })
     .catch((error) => {
